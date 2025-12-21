@@ -187,8 +187,12 @@ class VaultSizeModal extends Modal {
         for (const fileType of stats.fileTypes) {
             const row = tableDiv.createDiv({ cls: 'file-type-row' });
             
+            // Get color for this extension
+            const color = this.plugin.settings.extensionColors[fileType.extension] || '#888888';
+            
             const extDiv = row.createDiv({ cls: 'file-ext' });
-            extDiv.createEl('span', { text: `.${fileType.extension}` });
+            const extSpan = extDiv.createEl('span', { text: `.${fileType.extension}` });
+            extSpan.style.color = color;
             
             const countDiv = row.createDiv({ cls: 'file-count' });
             countDiv.createEl('span', { text: `${fileType.count} files` });
@@ -198,11 +202,12 @@ class VaultSizeModal extends Modal {
                 text: this.plugin.formatBytes(fileType.totalSize) 
             });
 
-            // Progress bar
+            // Progress bar with custom color
             const percentage = (fileType.totalSize / stats.totalSize) * 100;
             const barDiv = row.createDiv({ cls: 'file-bar' });
             const fillDiv = barDiv.createDiv({ cls: 'file-bar-fill' });
             fillDiv.style.width = `${percentage}%`;
+            fillDiv.style.backgroundColor = color;
         }
     }
 
