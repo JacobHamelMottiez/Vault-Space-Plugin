@@ -4,11 +4,21 @@ import VaultSizePlugin from "./main";
 export interface VaultSizeSettings {
     showIcon: boolean;
     statusBarFormat: string;
+    extensionColors: Record<string, string>;
 }
 
 export const DEFAULT_SETTINGS: VaultSizeSettings = {
     showIcon: true,
-    statusBarFormat: '📊 {size}'
+    statusBarFormat: '📊 {size}',
+    extensionColors: {
+        'md': '#00b894',
+        'pdf': '#d63031',
+        'png': '#fdcb6e',
+        'jpg': '#fdcb6e',
+        'jpeg': '#fdcb6e',
+        'mp4': '#6c5ce7',
+        'mp3': '#a29bfe'
+    }
 }
 
 export class VaultSizeSettingTab extends PluginSettingTab {
