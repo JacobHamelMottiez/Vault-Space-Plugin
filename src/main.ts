@@ -191,7 +191,8 @@ class VaultSizeModal extends Modal {
             const color = this.plugin.settings.extensionColors[fileType.extension] || '#888888';
             
             const extDiv = row.createDiv({ cls: 'file-ext' });
-            extDiv.createEl('span', { text: `.${fileType.extension}` });
+            const extSpan = extDiv.createEl('span', { text: `.${fileType.extension}` });
+            extSpan.style.color = color;
             
             const countDiv = row.createDiv({ cls: 'file-count' });
             countDiv.createEl('span', { text: `${fileType.count} files` });
