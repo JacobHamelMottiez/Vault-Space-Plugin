@@ -1,8 +1,77 @@
-/*
+.vault-size-modal {
+    padding: 20px;
+}
 
-This CSS file will be included with your plugin, and
-available in the app when your plugin is enabled.
+.vault-stats-overall {
+    display: flex;
+    gap: 30px;
+    margin: 20px 0;
+    padding: 20px;
+    background: var(--background-secondary);
+    border-radius: 8px;
+}
 
-If your plugin does not need CSS, delete this file.
+.stat-item {
+    flex: 1;
+    text-align: center;
+}
 
-*/
+.stat-label {
+    font-size: 0.9em;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+}
+
+.stat-value {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: var(--text-normal);
+}
+
+.vault-stats-table {
+    margin-top: 15px;
+}
+
+.file-type-row {
+    padding: 12px;
+    margin-bottom: 8px;
+    background: var(--background-secondary);
+    border-radius: 6px;
+}
+
+.file-type-row > div {
+    margin-bottom: 6px;
+}
+
+.file-ext {
+    font-weight: 600;
+    color: var(--text-normal);
+    font-family: monospace;
+}
+
+.file-count {
+    font-size: 0.9em;
+    color: var(--text-muted);
+}
+
+.file-size {
+    font-size: 0.95em;
+    color: var(--text-accent);
+    font-weight: 500;
+}
+
+.file-bar {
+    width: 100%;
+    height: 6px;
+    background: var(--background-modifier-border);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.file-bar-fill {
+    height: 100%;
+    background: var(--interactive-accent);
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
