@@ -198,9 +198,10 @@ class VaultSizeModal extends Modal {
             countDiv.createEl('span', { text: `${fileType.count} files` });
             
             const sizeDiv = row.createDiv({ cls: 'file-size' });
-            sizeDiv.createEl('span', { 
+            const sizeSpan = sizeDiv.createEl('span', { 
                 text: this.plugin.formatBytes(fileType.totalSize) 
             });
+            sizeSpan.style.color = 'var(--text-muted)';
 
             // Progress bar with custom color
             const percentage = (fileType.totalSize / stats.totalSize) * 100;
