@@ -201,16 +201,15 @@ class VaultSizeModal extends Modal {
             const sizeSpan = sizeDiv.createEl('span', { 
                 text: this.plugin.formatBytes(fileType.totalSize) 
             });
+            // Apply the same color to the size text
             sizeSpan.setCssProps({ color: color });
 
             // Progress bar with custom color
             const percentage = (fileType.totalSize / stats.totalSize) * 100;
             const barDiv = row.createDiv({ cls: 'file-bar' });
             const fillDiv = barDiv.createDiv({ cls: 'file-bar-fill' });
-            fillDiv.setCssProps({ 
-                width: `${percentage}%`,
-                backgroundColor: color
-            });
+            fillDiv.style.width = `${percentage}%`;
+            fillDiv.style.backgroundColor = color;
         }
     }
 
