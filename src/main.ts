@@ -182,6 +182,100 @@ class VaultSizeModal extends Modal {
         // File type breakdown
         contentEl.createEl('h3', { text: 'Breakdown by file type' });
 
+        // Interactive donut chart (like Highcharts pie chart)
+        const chartContainer = contentEl.createDiv({ cls: 'donut-chart-container' });
+        
+        // Create the donut chart
+        const donutWrapper = chartContainer.createDiv({ cls: 'donut-wrapper' });
+        const donutChart = donutWrapper.createDiv({ cls: 'donut-chart' });
+        
+        // Create conic-gradient for the donut
+        let gradientStops = '';
+        let currentPercentage = 0;
+        
+        for (let i = 0; i < stats.fileTypes.length; i++) {
+            const fileType = stats.fileTypes[i];
+            const color = this.plugin.settings.extensionColors[fileType.extension] || '#888888';
+            const percentage = (fileType.totalSize / stats.totalSize) * 100;
+            
+            if (i === 0) {
+                gradientStops = `${color} 0% ${percentage}%`;
+            } else {
+                gradientStops += `, ${color} ${currentPercentage}% ${currentPercentage + percentage}%`;
+            }
+            
+            currentPercentage += percentage;
+        }
+        
+        donutChart.setCssProps({
+            background: `conic-gradient(${gradientStops})`
+        });
+        
+        // Center label showing total
+        const centerLabel = donutChart.createDiv({ cls: 'donut-center-label' });
+        centerLabel.createEl('div', { 
+            text: 'Total',
+            cls: 'center-label-title'
+        });
+        centerLabel.createEl('div', { 
+            text: this.plugin.formatBytes(stats.totalSize),
+            cls: 'center-label-value'
+        });
+        centerLabel.createEl('div', { 
+            text: `${stats.totalFiles} files`,
+            cls: 'center-label-files'
+        });
+
+        // Interactive legend with percentages
+        const legend = chartContainer.createDiv({ cls: 'donut-legend' });
+        
+        for (const fileType of stats.fileTypes) {
+            const color = this.plugin.settings.extensionColors[fileType.extension] || '#888888';
+            const percentage = (fileType.totalSize / stats.totalSize) * 100;
+            
+            const legendItem = legend.createDiv({ cls: 'donut-legend-item' });
+            
+            // Color indicator
+            const colorBox = legendItem.createDiv({ cls: 'legend-color-box' });
+            colorBox.setCssProps({ backgroundColor: color });
+            
+            // Text info
+            const legendInfo = legendItem.createDiv({ cls: 'legend-info' });
+            
+            const legendName = legendInfo.createDiv({ cls: 'legend-name' });
+            legendName.createEl('span', { 
+                text: `.${fileType.extension}`,
+                cls: 'legend-ext-name'
+            });
+            legendName.createEl('span', { 
+                text: `${percentage.toFixed(1)}%`,
+                cls: 'legend-percentage'
+            });
+            
+            const legendDetails = legendInfo.createDiv({ cls: 'legend-details' });
+            legendDetails.createEl('span', { 
+                text: this.plugin.formatBytes(fileType.totalSize),
+                cls: 'legend-size'
+            });
+            legendDetails.createEl('span', { 
+                text: ` • ${fileType.count} files`,
+                cls: 'legend-count'
+            });
+            
+            // Make it interactive - highlight on hover
+            legendItem.addEventListener('mouseenter', () => {
+                legendItem.addClass('legend-item-active');
+                donutChart.addClass('donut-dimmed');
+            });
+            
+            legendItem.addEventListener('mouseleave', () => {
+                legendItem.removeClass('legend-item-active');
+                donutChart.removeClass('donut-dimmed');
+            });
+        }
+
+        // Detailed list with individual progress bars
+        contentEl.createEl('h3', { text: 'Detailed breakdown', cls: 'detailed-heading' });
         const tableDiv = contentEl.createDiv({ cls: 'vault-stats-table' });
         
         for (const fileType of stats.fileTypes) {
