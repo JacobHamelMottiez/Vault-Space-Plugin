@@ -4,7 +4,7 @@ This is a simple plugin for [Obsidian](https://obsidian.md). It make it intuitiv
 
 Here is a screenshot of the plugin in action: 
 
-![](assets/vault-size-plugin_showcase.gif)
+![](assets/example-v.1.1.0.png)
 
 ## API Documentation
 
