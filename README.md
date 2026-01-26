@@ -5,6 +5,6 @@ This is a simple plugin for [Obsidian](https://obsidian.md). It make it intuitiv
 ![](assets/example-v.1.1.0.png)
 
 ## Want to contribute to my work? 
-If my work is useful to you, please consider buying me a coffee by scanning or clicking on this QR code:  
+If my work is useful to you, please consider buying me a coffee by clicking [here](https://buymeacoffee.com/jacobhamelmottiez?new=1) or scan this QR code:  
 
-![https://buymeacoffee.com/jacobhamelmottiez?new=1](assets/bmc_qr.png)
+![](assets/bmc_qr.png)
