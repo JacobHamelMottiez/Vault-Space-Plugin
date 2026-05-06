@@ -1,11 +1,10 @@
 # Vault Size Plugin
+## What is this plugin for? 
+This is a simple plugin for [Obsidian](https://obsidian.md). It make it intuitive to see the **size of your vault** and the **number of files it contains** using an interactive piechart visualization. 
 
-This is a simple plugin for [Obsidian](https://obsidian.md). It make it intuitive to see the **size of your vault** and the **number of files it contains**.
+![](assets/example-v.1.1.0.png)
 
-Here is a screenshot of the plugin in action: 
+## Want to contribute to my work? 
+If my work is useful to you, please consider buying me a coffee by clicking [here](https://buymeacoffee.com/jacobhamelmottiez?new=1) or scan this QR code:  
 
-![](assets/vault-size-plugin_showcase.gif)
-
-## API Documentation
-
-See https://docs.obsidian.md
+![](assets/bmc_qr.png)
