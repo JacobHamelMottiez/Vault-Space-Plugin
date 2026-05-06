@@ -1,6 +1,6 @@
 {
-	"id": "vault_size-plugin",
-	"name": "Vault Size Plugin",
+	"id": "vault_size",
+	"name": "Vault Size",
 	"version": "1.1.0",
 	"minAppVersion": "0.15.0",
 	"description": "This plugin calculates and displays the total size of your Obsidian vault in the bottom ribbon bar. When you click on it, it shows a detailed breakdown of file sizes by folder.",
