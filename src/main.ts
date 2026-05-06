@@ -39,7 +39,7 @@ export default class VaultSizePlugin extends Plugin {
         });
 
         // Initial calculation
-        await this.updateVaultSize();
+        this.updateVaultSize();
 
         // Update when files change
         this.registerEvent(
@@ -61,12 +61,12 @@ export default class VaultSizePlugin extends Plugin {
             clearTimeout(this.updateTimeout);
         }
         this.updateTimeout = setTimeout(() => {
-            void this.updateVaultSize();
+            this.updateVaultSize();
         }, 1000);
     }
 
-    async updateVaultSize() {
-        this.cachedStats = await this.calculateVaultStats();
+    updateVaultSize() {
+        this.cachedStats = this.calculateVaultStats();
         const formattedSize = this.formatBytes(this.cachedStats.totalSize);
         const icon = this.settings.showIcon ? '📊 ' : '';
         this.statusBarItem.setText(`${icon}${formattedSize}`);
@@ -84,10 +84,10 @@ export default class VaultSizePlugin extends Plugin {
     async saveSettings() {
         await this.saveData(this.settings);
         // Update status bar when settings change
-        await this.updateVaultSize();
+        this.updateVaultSize();
     }
 
-    async calculateVaultStats(): Promise<VaultStats> {
+    calculateVaultStats(): VaultStats {
         const files = this.app.vault.getFiles();
         const fileTypeMap = new Map<string, FileTypeStats>();
         let totalSize = 0;
