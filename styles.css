@@ -336,3 +336,10 @@
     border-radius: 3px;
     transition: width 0.3s ease, background-color 0.3s ease;
 }
+
+.vault-size-modal {
+    max-width: var(--vault-modal-max-width);
+    width: var(--vault-modal-width);
+    max-height: var(--vault-modal-max-height);
+    overflow: var(--vault-modal-overflow);
+}

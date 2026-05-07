@@ -153,10 +153,12 @@ class VaultSizeModal extends Modal {
         contentEl.addClass('vault-size-modal');
         
         // Set a maximum width on the modal itself to prevent horizontal scrolling
-        this.modalEl.style.maxWidth = '95vw';
-        this.modalEl.style.width = '800px';
-        this.modalEl.style.maxHeight = '90vh';
-        this.modalEl.style.overflow = 'auto';
+        this.modalEl.setCssProps({
+            '--vault-modal-max-width': '95vw',
+            '--vault-modal-width': '800px',
+            '--vault-modal-max-height': '90vh',
+            '--vault-modal-overflow': 'auto',
+        });
 
         // Title
         contentEl.createEl('h1', { text: 'Vault statistics' });
